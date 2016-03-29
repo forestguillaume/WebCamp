@@ -1,0 +1,70 @@
+CREATE DATABASE Costumeo CHARACTER SET UTF8;
+USE Costumeo;
+
+CREATE TABLE Role
+(
+    ID SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Role_name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Users
+(
+    ID SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Firstname VARCHAR(100) NOT NULL,
+    Lastname VARCHAR(100) NOT NULL,
+    Login VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Phone VARCHAR(10) NOT NULL,
+    Password VARCHAR(100) NOT NULL,
+    Address VARCHAR(100) NOT NULL,
+    Zip INT(5) UNSIGNED NOT NULL,
+    Birthdate DATE NOT NULL,
+    Creation_date DATETIME NOT NULL,
+    Role SMALLINT UNSIGNED NOT NULL 
+);
+
+CREATE TABLE Offers
+(
+    ID SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    Product_name VARCHAR(100) NOT NULL,
+    Description VARCHAR(300) NOT NULL,
+    Image_link VARCHAR(200) NOT NULL,
+    Quantity INT(3) UNSIGNED NOT NULL,
+    Price FLOAT UNSIGNED NOT NULL,
+    Seller_name VARCHAR(60) NOT NULL,
+    Category VARCHAR(30) NOT NULL,
+    Date_of_posting DATETIME NOT NULL,
+    Sex VARCHAR(20) NOT NULL,
+    Quality VARCHAR(60) NOT NULL,
+    Display SMALLINT UNSIGNED NOT NULL
+);
+
+CREATE TABLE Deleted_offers
+(
+    ID SMALLINT UNSIGNED NOT NULL,
+    Product_name VARCHAR(100) NOT NULL,
+    Description VARCHAR(300) NOT NULL,
+    Image_link VARCHAR(200) NOT NULL,
+    Quantity INT(3) UNSIGNED NOT NULL,
+    Price FLOAT UNSIGNED NOT NULL,
+    Seller_name VARCHAR(60) NOT NULL,
+    Category VARCHAR(30) NOT NULL,
+    Date_of_posting DATETIME NOT NULL,
+    Sex VARCHAR(20) NOT NULL,
+    Quality VARCHAR(60) NOT NULL,
+    Display SMALLINT UNSIGNED NOT NULL
+);
+
+CREATE TABLE Rate
+(
+    offer_ID SMALLINT UNSIGNED NOT NULL,
+    total_votes INT UNSIGNED NOT NULL,
+    average FLOAT UNSIGNED NOT NULL
+);
+
+INSERT INTO Role (Role_name)
+VALUES
+("Administrateur"),
+("Modérateur"),
+("Entreprise"),
+("Particulier");
